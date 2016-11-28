@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aNt-xg-RqJ">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="aNt-xg-RqJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Grocery Lists-->
         <scene sceneID="vQK-Ik-LvP">
             <objects>
-                <viewController id="q7Q-ry-28h" userLabel="Grocery Lists" sceneMemberID="viewController">
+                <viewController id="q7Q-ry-28h" userLabel="Grocery Lists" customClass="GroceryListViewController" customModule="GroceryApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Z97-6m-vBd"/>
                         <viewControllerLayoutGuide type="bottom" id="HPJ-dU-4Q7"/>
@@ -30,7 +30,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cyl-ga-fL0" id="iRZ-ks-Rbb">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cx-W7-YMd" userLabel="Title">
@@ -42,8 +42,15 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="4Pd-2B-KMM" kind="show" id="IMS-c9-v9s"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="q7Q-ry-28h" id="vIb-ka-tKe"/>
+                                    <outlet property="delegate" destination="q7Q-ry-28h" id="jeK-Y1-fz3"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -55,11 +62,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Grocery Lists" id="Rd1-HW-sp9" userLabel="Grocery Lists">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="FTj-5e-OJW"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="FTj-5e-OJW">
+                            <connections>
+                                <segue destination="uye-Dk-hLz" kind="presentation" id="eel-bx-5wm"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="4Pd-2B-KMM" kind="show" id="EQE-kF-eCl"/>
-                        <segue destination="uye-Dk-hLz" kind="presentation" id="fFR-MP-SGs"/>
+                        <outlet property="groceryListTableView" destination="bkf-kI-xEU" id="Pdg-Zj-qT4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MkP-r0-yVs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -69,7 +79,7 @@
         <!--Grocery Items-->
         <scene sceneID="4PI-ei-Hd1">
             <objects>
-                <viewController id="4Pd-2B-KMM" userLabel="Grocery Items" sceneMemberID="viewController">
+                <viewController id="4Pd-2B-KMM" userLabel="Grocery Items" customClass="GroceryItemViewController" customModule="GroceryApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PKb-NX-jAK"/>
                         <viewControllerLayoutGuide type="bottom" id="GE3-Mn-ZHZ"/>
@@ -86,7 +96,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="K20-7N-zsi" id="J9n-NQ-IXH">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCo-Ic-VdN">
@@ -107,6 +117,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="4Pd-2B-KMM" id="LcU-kX-frM"/>
+                                    <outlet property="delegate" destination="4Pd-2B-KMM" id="WrT-CH-hM4"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -118,10 +132,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Grocery Items" id="EGc-zb-xU7" userLabel="Grocery Items">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3sJ-IF-kFZ"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3sJ-IF-kFZ">
+                            <connections>
+                                <segue destination="Hac-SJ-Asc" kind="presentation" id="BhQ-kj-7gX"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="Hac-SJ-Asc" kind="presentation" id="8jA-hj-6x4"/>
+                        <outlet property="groceryItemTableView" destination="lNG-kO-Xbz" id="g95-j6-wTx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Ro-aX-qwJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -131,7 +149,7 @@
         <!--Add Grocery List-->
         <scene sceneID="1NO-4Z-mI0">
             <objects>
-                <viewController id="uye-Dk-hLz" userLabel="Add Grocery List" sceneMemberID="viewController">
+                <viewController id="uye-Dk-hLz" userLabel="Add Grocery List" customClass="AddGroceryListViewController" customModule="GroceryApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rjZ-KE-Mj6"/>
                         <viewControllerLayoutGuide type="bottom" id="ADj-Ls-zen"/>
@@ -161,6 +179,9 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="dimissKeyboard" destination="uye-Dk-hLz" eventType="touchUpInside" id="LEs-vg-d2a"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IE8-UA-LHx">
                                 <rect key="frame" x="195" y="617" width="164" height="30"/>
@@ -168,6 +189,9 @@
                                 <state key="normal" title="Add List">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="add" destination="uye-Dk-hLz" eventType="touchUpInside" id="fwJ-3b-0V2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -186,6 +210,9 @@
                             <constraint firstItem="IE8-UA-LHx" firstAttribute="top" secondItem="WYG-uK-cgp" secondAttribute="top" id="uSq-f0-Sfo"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="nameField" destination="6ZF-NV-WYN" id="xfT-BS-7VV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m59-l7-luk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -194,7 +221,7 @@
         <!--Add Grocery Item-->
         <scene sceneID="C3g-bU-buP">
             <objects>
-                <viewController title="Add Grocery Item" id="Hac-SJ-Asc" userLabel="Add Grocery Item" sceneMemberID="viewController">
+                <viewController title="Add Grocery Item" id="Hac-SJ-Asc" userLabel="Add Grocery Item" customClass="AddGroceryItemViewController" customModule="GroceryApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fUp-9w-nYG"/>
                         <viewControllerLayoutGuide type="bottom" id="9xX-NM-JHi"/>
@@ -224,6 +251,9 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="dimissKeyboard" destination="Hac-SJ-Asc" eventType="touchUpInside" id="EDh-w1-2Bd"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUl-wD-9ks">
                                 <rect key="frame" x="194.5" y="617" width="164.5" height="30"/>
@@ -231,6 +261,9 @@
                                 <state key="normal" title="Add Item">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="add" destination="Hac-SJ-Asc" eventType="touchUpInside" id="LYu-Cd-zbo"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Item Quantity" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zXl-VM-227">
                                 <rect key="frame" x="16" y="112" width="343" height="40"/>
@@ -261,6 +294,10 @@
                             <constraint firstItem="oW2-ud-jV3" firstAttribute="leading" secondItem="5RO-pA-OXm" secondAttribute="leading" constant="-1" id="mKf-M6-j1L"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="nameField" destination="t7J-ym-i0U" id="ftD-ag-klt"/>
+                        <outlet property="quantityField" destination="zXl-VM-227" id="79a-MA-x20"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jvs-ED-Qo3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
