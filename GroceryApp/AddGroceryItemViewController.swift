@@ -19,7 +19,11 @@ class AddGroceryItemViewController: UIViewController {
         try? manager.create(data: (nameField?.text, quantityField?.text?.integer ?? 0))
         dismiss(animated: UIView.areAnimationsEnabled, completion: nil)
     }
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
+    }
 }
 
 extension String {

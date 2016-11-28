@@ -18,4 +18,9 @@ class AddGroceryListViewController: UIViewController {
         try? manager.create(groceryListNamed: nameField?.text)
         dismiss(animated: UIView.areAnimationsEnabled, completion: nil)
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
+    }
 }
