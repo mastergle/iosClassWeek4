@@ -18,12 +18,12 @@ class DataManager {
     
     var managedObjectContext: NSManagedObjectContext?
     
-    var groceryLists: [GroceryList]
+    var groceryLists: [List]
     var groceryListsCount: Int {
         return groceryLists.count
     }
     
-    var groceryItems: [GroceryItem]
+    var groceryItems: [Item]
     var groceryItemsCount: Int {
         return groceryItems.count
     }
@@ -51,7 +51,7 @@ extension DataManager {
         guard let entity = NSEntityDescription.entity(forEntityName: "List", in: ctx) else {
             throw DataError.BadEntity("The entity description was bad")
         }
-        let obj = GroceryList(entity: entity, insertInto: ctx)
+        let obj = List(entity: entity, insertInto: ctx)
         obj.name = name
         
         try? save()
@@ -67,7 +67,7 @@ extension DataManager {
     func loadGroceryItem() {
         let selectedGroceryList = groceryLists.value(at: selectedGroceryListIndex)
         groceryItems = selectedGroceryList?.item?.flatMap { item in
-            return item as? GroceryItem
+            return item as? Item
         } ?? []
     }
     
@@ -78,7 +78,7 @@ extension DataManager {
         guard let entity = NSEntityDescription.entity(forEntityName: "Item", in: ctx) else {
             throw DataError.BadEntity("The entity description was bad")
         }
-        let obj = GroceryItem(entity: entity, insertInto: ctx)
+        let obj = Item(entity: entity, insertInto: ctx)
         obj.name = data.name
         obj.quantity = Int16(data.quantity)
         obj.list = groceryLists.value(at: selectedGroceryListIndex)

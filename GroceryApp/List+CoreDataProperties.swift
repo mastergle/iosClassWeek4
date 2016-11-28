@@ -4,17 +4,16 @@
 //
 //  Created by Barry, Elh on 11/28/16.
 //  Copyright © 2016 Barry, Elh. All rights reserved.
-//  This file was automatically generated and should not be edited.
 //
 
 import Foundation
 import CoreData
 
 
-extension GroceryList {
+extension List {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<GroceryList> {
-        return NSFetchRequest<GroceryList>(entityName: "List");
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<List> {
+        return NSFetchRequest<List>(entityName: "List");
     }
 
     @NSManaged public var name: String?
@@ -23,13 +22,13 @@ extension GroceryList {
 }
 
 // MARK: Generated accessors for item
-extension GroceryList {
+extension List {
 
     @objc(addItemObject:)
-    @NSManaged public func addToItem(_ value: GroceryItem)
+    @NSManaged public func addToItem(_ value: Item)
 
     @objc(removeItemObject:)
-    @NSManaged public func removeFromItem(_ value: GroceryItem)
+    @NSManaged public func removeFromItem(_ value: Item)
 
     @objc(addItem:)
     @NSManaged public func addToItem(_ values: NSSet)
