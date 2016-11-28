@@ -60,6 +60,14 @@ extension DataManager {
     func getGroceryListName(from indexPath: IndexPath) -> String? {
         return groceryLists.value(at: indexPath.row)?.name
     }
+    
+    func getGroceryList(from indexPath: IndexPath) -> (name: String?, itemCount: Int?)? {
+        guard let groceryList = groceryLists.value(at: indexPath.row) else {
+            return nil
+        }
+        
+        return (groceryList.name, (groceryList.item?.count))
+    }
 }
 
 extension DataManager {
