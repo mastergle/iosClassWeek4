@@ -32,7 +32,7 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
         
         let list = manager.getGroceryList(from: indexPath)
         cell.textLabel?.text = list?.name
-        cell.detailTextLabel?.text = "Items: \(list?.itemCount ?? 0)"
+        cell.detailTextLabel?.text = "\(list?.itemCount ?? 0) Items"
         
         return cell
     }
