@@ -8,9 +8,10 @@
 
 import UIKit
 
-class GroceryItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class GroceryItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SelectedItemViewController {
 
     @IBOutlet var groceryItemTableView: UITableView?
+    var selectedItemIndex: Int?
     
     let manager = DataManager.shared
     
@@ -40,6 +41,8 @@ class GroceryItemViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: UIView.areAnimationsEnabled)
         
-        manager.selectedGroceryItemIndex = indexPath.row
+        if let selectedIndex = selectedItemIndex {
+            manager.selectedGroceryItemIndex = selectedIndex
+        }
     }
 }

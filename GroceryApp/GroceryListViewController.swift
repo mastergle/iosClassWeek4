@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SelectedItemViewController {
+    var selectedItemIndex : Int? {get set}
+}
+
 class GroceryListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet var groceryListTableView: UITableView?
@@ -19,6 +23,14 @@ class GroceryListViewController: UIViewController, UITableViewDataSource, UITabl
         
         manager.loadGroceryListData()
         groceryListTableView?.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if var destination = segue.destination as? SelectedItemViewController {
+            destination.selectedItemIndex = groceryListTableView?.indexPathForSelectedRow?.row
+        }
     }
     
     // MARK: - Table View
