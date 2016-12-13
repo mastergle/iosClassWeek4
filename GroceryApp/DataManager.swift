@@ -57,6 +57,16 @@ extension DataManager {
         try? save()
     }
     
+    func updateGroceryList() {
+        
+        // TODO
+    }
+    
+    func deleteGroceryList() {
+        
+        // TODO
+    }
+    
     func getGroceryListName(from indexPath: IndexPath) -> String? {
         return groceryLists.value(at: indexPath.row)?.name
     }
@@ -92,6 +102,16 @@ extension DataManager {
         obj.list = groceryLists.value(at: selectedGroceryListIndex)
         
         try? save()
+    }
+    
+    func updateGroceryItem() {
+        
+        // TODO
+    }
+    
+    func deleteGroceryItem() {
+        
+        // TODO
     }
     
     func getGroceryItem(from indexPath: IndexPath) -> (name: String?, quantity: Int)? {
