@@ -15,8 +15,6 @@ class GroceryItemViewController: UIViewController, UITableViewDataSource, UITabl
     
     let manager = DataManager.shared
     
-    var state: TableState = .normal
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
