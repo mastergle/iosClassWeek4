@@ -15,6 +15,8 @@ class GroceryItemViewController: UIViewController, UITableViewDataSource, UITabl
     
     let manager = DataManager.shared
     
+    var state: TableState = .normal
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -44,5 +46,20 @@ class GroceryItemViewController: UIViewController, UITableViewDataSource, UITabl
         if let selectedIndex = selectedItemIndex {
             manager.selectedGroceryItemIndex = selectedIndex
         }
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteRow(at: indexPath)
+        }
+    }
+    
+    func deleteRow(at indexPath: IndexPath) {
+        try? manager.deleteGroceryItem(from: indexPath)
+        groceryItemTableView?.reloadData()
     }
 }

@@ -57,14 +57,17 @@ extension DataManager {
         try? save()
     }
     
-    func updateGroceryList() {
+    func deleteGroceryList(from indexPath: IndexPath) throws {
+        guard let ctx = managedObjectContext else {
+            throw DataError.BadManagedObjectContext("The managed object context was nil")
+        }
+        guard let list = groceryLists.value(at: indexPath.row) else {
+            throw DataError.BadManagedObjectContext("The grocery list was not found")
+        }
+        ctx.delete(list)
+        groceryLists.remove(at: indexPath.row)
         
-        // TODO
-    }
-    
-    func deleteGroceryList() {
-        
-        // TODO
+        try? save()
     }
     
     func getGroceryListName(from indexPath: IndexPath) -> String? {
@@ -104,14 +107,17 @@ extension DataManager {
         try? save()
     }
     
-    func updateGroceryItem() {
+    func deleteGroceryItem(from indexPath: IndexPath) throws {
+        guard let ctx = managedObjectContext else {
+            throw DataError.BadManagedObjectContext("The managed object context was nil")
+        }
+        guard let item = groceryItems.value(at: indexPath.row) else {
+            throw DataError.BadManagedObjectContext("The grocery item was not found")
+        }
+        ctx.delete(item)
+        groceryItems.remove(at: indexPath.row)
         
-        // TODO
-    }
-    
-    func deleteGroceryItem() {
-        
-        // TODO
+        try? save()
     }
     
     func getGroceryItem(from indexPath: IndexPath) -> (name: String?, quantity: Int)? {
